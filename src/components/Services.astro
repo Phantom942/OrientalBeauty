@@ -1,0 +1,34 @@
+---
+import { location } from '../config';
+
+const services = [
+  {
+    icon: "✨",
+    title: "Browlift",
+    description: "Sublimez votre regard. Soin et mise en forme des sourcils, teinture et restructuration — sans épilation, pour un résultat naturel et durable.",
+  },
+  {
+    icon: "🌸",
+    title: "Cire Orientale",
+    description: "Épilation à la cire orientale pour une peau douce et lisse. Technique ancestrale, douceur et résultats impeccables sur tout le corps.",
+  },
+];
+---
+
+<section class="section" id="services" aria-labelledby="services-title">
+  <div class="container" data-animate>
+    <header class="section-header" data-animate-stagger>
+      <h2 id="services-title" class="section-header__title">Nos services à {location.city}</h2>
+      <p>Browlift et cire orientale à Créteil (94). Prestations soignées dans un cadre apaisant.</p>
+    </header>
+    <div class="services-grid">
+      {services.map((service, i) => (
+        <article class="service-card" data-animate-stagger>
+          <div class="service-card__icon" aria-hidden="true">{service.icon}</div>
+          <h3 class="service-card__title">{service.title}</h3>
+          <p class="service-card__desc">{service.description}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

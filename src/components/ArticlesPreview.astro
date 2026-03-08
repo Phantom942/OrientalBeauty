@@ -1,0 +1,24 @@
+---
+import { articles } from '../data/articles';
+---
+
+<section class="section" id="conseils" aria-labelledby="conseils-title">
+  <div class="container" data-animate>
+    <header class="section-header" data-animate-stagger>
+      <h2 id="conseils-title" class="section-header__title">Conseils & Préparation</h2>
+      <p>En savoir plus sur nos prestations et comment bien vous préparer.</p>
+    </header>
+    <div class="articles-preview">
+      {articles.slice(0, 3).map((article) => (
+        <a href={article.href} class="article-preview-card" data-animate-stagger>
+          <h3 class="article-preview-card__title">{article.title}</h3>
+          <p class="article-preview-card__desc">{article.description}</p>
+          <span class="article-preview-card__link">Lire →</span>
+        </a>
+      ))}
+    </div>
+    <p class="articles-preview__cta">
+      <a href="/articles/" class="btn btn--secondary">Tous les articles</a>
+    </p>
+  </div>
+</section>

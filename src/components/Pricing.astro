@@ -1,0 +1,77 @@
+---
+const browliftPricing = [
+  { name: "Browlift simple", price: "30 €" },
+  { name: "Browlift avec Teinture", price: "35 €" },
+  { name: "Browlift, restructuration du sourcil sans épilation + Teinture", price: "45 €" },
+];
+
+const cireCorps = [
+  { name: "Demi bras", price: "10 €" },
+  { name: "Bras entier", price: "15 €" },
+  { name: "Demi jambes", price: "10 €" },
+  { name: "Jambes entières", price: "20 €" },
+  { name: "Maillot simple", price: "10 €" },
+  { name: "Maillot intégrale", price: "20 €" },
+  { name: "Bas du dos", price: "10 €" },
+  { name: "Dos entier", price: "15 €" },
+  { name: "Ventre", price: "10 €" },
+  { name: "Aisselles", price: "10 €" },
+  { name: "Corps complet", price: "90 €" },
+];
+
+const cireVisage = [
+  { name: "Duvet visage entier", price: "10 €" },
+  { name: "Lèvres, Menton", price: "5 €" },
+];
+---
+
+<section class="section section--alt" id="tarifs" aria-labelledby="tarifs-title">
+  <div class="container" data-animate>
+    <header class="section-header" data-animate-stagger>
+      <h2 id="tarifs-title" class="section-header__title">Tarifs</h2>
+      <p>Des tarifs transparents. Prix de lancement pour le Browlift.</p>
+    </header>
+
+    <div class="pricing-sections">
+      {/* Browlift */}
+      <div class="pricing-section" data-animate-stagger>
+        <h3 class="pricing-section__title">Browlift</h3>
+        <ul class="pricing-list">
+          {browliftPricing.map((item) => (
+            <li class="pricing-item">
+              <span class="pricing-item__name">{item.name}</span>
+              <span class="pricing-item__price">{item.price}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="pricing-note">
+          <span class="pricing-note__icon" aria-hidden="true">💡</span>
+          Prestation dédiée au soin et à la mise en forme des sourcils. L'épilation n'est pas incluse.
+        </p>
+      </div>
+
+      {/* Cire Orientale */}
+      <div class="pricing-section" data-animate-stagger>
+        <h3 class="pricing-section__title">Cire Orientale</h3>
+        <h4 class="pricing-section__subtitle">Épilation corps</h4>
+        <ul class="pricing-list">
+          {cireCorps.map((item) => (
+            <li class="pricing-item">
+              <span class="pricing-item__name">{item.name}</span>
+              <span class="pricing-item__price">{item.price}</span>
+            </li>
+          ))}
+        </ul>
+        <h4 class="pricing-section__subtitle">Visage</h4>
+        <ul class="pricing-list">
+          {cireVisage.map((item) => (
+            <li class="pricing-item">
+              <span class="pricing-item__name">{item.name}</span>
+              <span class="pricing-item__price">{item.price}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

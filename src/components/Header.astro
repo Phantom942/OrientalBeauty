@@ -1,0 +1,53 @@
+---
+import { site, navItems, links } from '../config';
+import IconInstagram from './IconInstagram.astro';
+---
+
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="/" class="logo">{site.name}</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
+    <nav class="nav" id="nav-menu" aria-label="Navigation principale">
+      {navItems.map((item) => (
+        <a href={item.href} class="nav__link">{item.label}</a>
+      ))}
+      <a href={links.instagram} class="nav-instagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram Oriental Beauty">
+        <IconInstagram />
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('header');
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+  }
+
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navMenu.classList.toggle('nav--open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    navMenu.querySelectorAll('.nav__link').forEach((link) => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('nav--open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Ouvrir le menu');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+</script>

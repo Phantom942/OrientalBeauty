@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { articles } from '../../data/articles';
+---
+
+<Layout
+  title="Conseils & Articles — Oriental Beauty"
+  description="Conseils beauté, cire orientale, brow lift et préparation à l'épilation. Oriental Beauty à Créteil (94)."
+>
+  <Header />
+  <main id="main">
+    <section class="section">
+      <div class="container" data-animate>
+        <header class="section-header" data-animate-stagger>
+          <h1 class="section-header__title">Conseils & Articles</h1>
+          <p>Informations et conseils sur nos prestations : cire orientale, brow lift et préparation à l'épilation.</p>
+        </header>
+        <div class="articles-grid">
+          {articles.map((article) => (
+            <a href={article.href} class="article-card" data-animate-stagger>
+              <h2 class="article-card__title">{article.title}</h2>
+              <p class="article-card__desc">{article.description}</p>
+              <span class="article-card__link">Lire l'article →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>

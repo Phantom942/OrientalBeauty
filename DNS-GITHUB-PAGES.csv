@@ -1,0 +1,6 @@
+"NOM","TTL","TYPE","VALEUR","ACTION"
+"www.orientalbeauty.fr.",900,"CNAME","TON_USERNAME.github.io","REMPLACER (ancienne valeur: onstatic-fr.setupdns.net)"
+"orientalbeauty.fr.",900,"A","185.199.108.153","REMPLACER (ancienne: 81.88.57.68)"
+"orientalbeauty.fr.",900,"A","185.199.109.153","AJOUTER"
+"orientalbeauty.fr.",900,"A","185.199.110.153","AJOUTER"
+"orientalbeauty.fr.",900,"A","185.199.111.153","AJOUTER"

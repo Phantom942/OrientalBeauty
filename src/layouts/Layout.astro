@@ -1,0 +1,115 @@
+---
+import '../styles/global.css';
+import { site, seo, location, contact, links } from '../config';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = seo.title, description = seo.description } = Astro.props;
+
+const canonicalUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : null;
+
+// Format téléphone pour schema.org (E.164)
+const phoneForSchema = contact.phone.replace(/\s/g, '').replace(/^0/, '+33');
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "BeautySalon",
+  "name": site.name,
+  "description": description,
+  "url": canonicalUrl,
+  "telephone": phoneForSchema,
+  "email": contact.email,
+  "address": {
+    "@type": "PostalAddress",
+    ...(location.streetAddress && { streetAddress: location.streetAddress }),
+    "addressLocality": location.city,
+    "postalCode": location.postalCode,
+    "addressRegion": location.region,
+    "addressCountry": "FR",
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": location.geo.lat,
+    "longitude": location.geo.lng,
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": location.city,
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": location.departmentName,
+    },
+  },
+  "priceRange": "€€",
+  "sameAs": [links.instagram],
+};
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#faf9f7" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={seo.keywords.join(", ")} />
+    <meta name="robots" content="index, follow" />
+    <meta name="geo.region" content="FR-IDF" />
+    <meta name="geo.placename" content={location.city} />
+    <meta name="geo.position" content={`${location.geo.lat};${location.geo.lng}`} />
+    <meta name="ICBM" content={`${location.geo.lat}, ${location.geo.lng}`} />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <link rel="sitemap" type="application/xml" href={`${import.meta.env.BASE_URL}sitemap-index.xml`} />
+
+    <!-- Open Graph / Réseaux sociaux -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="fr_FR" />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    <meta property="og:image" content={new URL('/og-image.png', Astro.site ?? 'https://votredomaine.com').href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Données structurées JSON-LD (LocalBusiness) -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Aller au contenu principal</a>
+    <slot />
+
+    <script>
+      if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const el = entry.target;
+              el.classList.add("in-view");
+              el.querySelectorAll("[data-animate-stagger]").forEach((child, i) => {
+                (child as HTMLElement).style.transitionDelay = `${i * 0.06}s`;
+              });
+              observer.unobserve(el);
+            });
+          },
+          { rootMargin: "0px 0px -50px 0px", threshold: 0 }
+        );
+        document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el));
+      }
+    </script>
+  </body>
+</html>

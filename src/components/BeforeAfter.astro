@@ -1,0 +1,38 @@
+---
+/**
+ * Avant / Après Browlift
+ * Images : public/images/avant-apres/*.webp
+ * Pour ajouter des photos : placer les PNG dans public/images/ puis npm run images:webp
+ */
+const beforeAfterItems = [
+  { avant: "/images/avant-apres/browlift-1-avant.webp", apres: "/images/avant-apres/browlift-1-apres.webp", alt: "Browlift exemple 1" },
+  { avant: "/images/avant-apres/browlift-2-avant.webp", apres: "/images/avant-apres/browlift-2-apres.webp", alt: "Browlift exemple 2" },
+  { avant: "/images/avant-apres/browlift-3-apres.webp", apres: "/images/avant-apres/browlift-3-avant.webp", alt: "Browlift exemple 3" },
+  { avant: "/images/avant-apres/browlift-4-apres.webp", apres: "/images/avant-apres/browlift-4-avant.webp", alt: "Browlift exemple 4" },
+];
+---
+
+<section class="section section--alt" id="avant-apres" aria-labelledby="avant-apres-title">
+  <div class="container" data-animate>
+    <header class="section-header" data-animate-stagger>
+      <h2 id="avant-apres-title" class="section-header__title">Avant / Après</h2>
+      <p>Résultats Browlift. Découvrez les transformations réalisées à l'institut.</p>
+    </header>
+    <div class="before-after-grid">
+      {beforeAfterItems.map((item, i) => (
+        <div class="before-after-card" data-animate-stagger>
+          <div class="before-after-images">
+            <div class="before-after__half">
+              <img src={item.avant} alt={`Avant - ${item.alt}`} loading="lazy" decoding="async" width="400" height="250" />
+              <span class="before-after__label">Avant</span>
+            </div>
+            <div class="before-after__half">
+              <img src={item.apres} alt={`Après - ${item.alt}`} loading="lazy" decoding="async" width="400" height="250" />
+              <span class="before-after__label">Après</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
