@@ -50,6 +50,19 @@ export const contact = {
   address: "Créteil, 94000", // À compléter avec l'adresse exacte
 } as const;
 
+/** Informations juridiques — à compléter */
+export const legal = {
+  companyName: "Oriental Beauty",
+  legalForm: "Micro-entreprise", // ou "SARL", "SAS", etc.
+  siret: "", // À compléter
+  rcs: "", // À compléter si société
+  publicationDirector: "", // Nom du responsable (propriétaire du cabinet)
+  host: {
+    name: "GitHub Inc.",
+    address: "88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis",
+  },
+} as const;
+
 export const navItems = [
   { href: "/#services", label: "Services" },
   { href: "/#avant-apres", label: "Avant / Après" },

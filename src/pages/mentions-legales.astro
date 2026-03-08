@@ -1,0 +1,79 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site, contact, location, legal } from '../config';
+---
+
+<ArticleLayout
+  title="Mentions légales"
+  description="Mentions légales du site Oriental Beauty - institut d'esthétique à Créteil."
+>
+  <Header />
+  <main id="main">
+    <article class="article">
+      <div class="article__container">
+        <a href="/" class="article__back">← Retour à l'accueil</a>
+        <header class="article__header">
+          <h1 class="article__title">Mentions légales</h1>
+          <p class="article__lead">Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique.</p>
+        </header>
+        <div class="article__content legal-content">
+          <section>
+            <h2>1. Éditeur du site</h2>
+            <p>
+              <strong>{legal.companyName}</strong><br />
+              {legal.legalForm}
+              {legal.siret && <><br />SIRET : {legal.siret}</>}
+              {legal.rcs && <><br />RCS : {legal.rcs}</>}
+              <br />
+              {contact.address}
+              <br />
+              Téléphone : <a href={`tel:${contact.phone.replace(/\s/g, '')}`}>{contact.phone}</a>
+              <br />
+              Email : <a href={`mailto:${contact.email}`}>{contact.email}</a>
+            </p>
+          </section>
+
+          <section>
+            <h2>2. Directeur de la publication</h2>
+            <p>
+              {legal.publicationDirector || "À compléter"}
+            </p>
+          </section>
+
+          <section>
+            <h2>3. Hébergement</h2>
+            <p>
+              Ce site est hébergé par :<br />
+              <strong>{legal.host.name}</strong><br />
+              {legal.host.address}
+            </p>
+          </section>
+
+          <section>
+            <h2>4. Propriété intellectuelle</h2>
+            <p>
+              L'ensemble du contenu de ce site (textes, images, graphismes, logo) est protégé par le droit d'auteur et le droit des marques. Toute reproduction, représentation ou exploitation, totale ou partielle, sans autorisation préalable est interdite.
+            </p>
+          </section>
+
+          <section>
+            <h2>5. Liens hypertextes</h2>
+            <p>
+              Ce site peut contenir des liens vers d'autres sites. {site.name} n'exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.
+            </p>
+          </section>
+
+          <section>
+            <h2>6. Crédits</h2>
+            <p>
+              Site conçu et développé par <a href="https://phantomdev.fr" target="_blank" rel="noopener noreferrer">PhantomDev</a>.
+            </p>
+          </section>
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</ArticleLayout>

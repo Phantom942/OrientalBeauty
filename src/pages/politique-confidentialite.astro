@@ -1,0 +1,103 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site, contact } from '../config';
+---
+
+<ArticleLayout
+  title="Politique de confidentialité"
+  description="Politique de confidentialité et protection des données personnelles - Oriental Beauty."
+>
+  <Header />
+  <main id="main">
+    <article class="article">
+      <div class="article__container">
+        <a href="/" class="article__back">← Retour à l'accueil</a>
+        <header class="article__header">
+          <h1 class="article__title">Politique de confidentialité</h1>
+          <p class="article__lead">Cette politique informe les utilisateurs du site {site.name} sur la collecte et le traitement de leurs données personnelles.</p>
+        </header>
+        <div class="article__content legal-content">
+          <section>
+            <h2>1. Responsable du traitement</h2>
+            <p>
+              {site.name}<br />
+              Email : <a href={`mailto:${contact.email}`}>{contact.email}</a>
+            </p>
+          </section>
+
+          <section>
+            <h2>2. Données collectées</h2>
+            <p>
+              Ce site ne collecte pas de données personnelles de manière directe (aucun formulaire d'inscription). Les seules données susceptibles d'être collectées concernent :
+            </p>
+            <ul>
+              <li><strong>Réservation en ligne</strong> : lors d'une prise de rendez-vous via Calendly ou WhatsApp, les données (nom, email, téléphone) sont traitées par ces prestataires selon leurs propres politiques de confidentialité.</li>
+              <li><strong>Contact par email</strong> : les informations envoyées par email sont conservées uniquement pour traiter votre demande.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>3. Cookies</h2>
+            <p>
+              Ce site n'utilise pas de cookies analytics ou publicitaires. Seuls des cookies techniques strictement nécessaires au fonctionnement du site peuvent être utilisés.
+            </p>
+          </section>
+
+          <section>
+            <h2>4. Base légale et finalités</h2>
+            <p>
+              Le traitement des données repose sur votre consentement (prise de rendez-vous, contact) ou sur l'intérêt légitime du responsable du site (réponse à vos demandes).
+            </p>
+          </section>
+
+          <section>
+            <h2>5. Durée de conservation</h2>
+            <p>
+              Les données de contact et de réservation sont conservées le temps nécessaire au traitement de votre demande et aux obligations légales applicables.
+            </p>
+          </section>
+
+          <section>
+            <h2>6. Vos droits (RGPD)</h2>
+            <p>
+              Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez des droits suivants :
+            </p>
+            <ul>
+              <li><strong>Droit d'accès</strong> : obtenir une copie de vos données</li>
+              <li><strong>Droit de rectification</strong> : corriger des données inexactes</li>
+              <li><strong>Droit à l'effacement</strong> : demander la suppression de vos données</li>
+              <li><strong>Droit d'opposition</strong> : vous opposer au traitement de vos données</li>
+              <li><strong>Droit à la portabilité</strong> : recevoir vos données dans un format structuré</li>
+            </ul>
+            <p>
+              Pour exercer ces droits, contactez-nous à <a href={`mailto:${contact.email}`}>{contact.email}</a>.
+            </p>
+            <p>
+              Vous avez également le droit d'introduire une réclamation auprès de la <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer">CNIL</a>.
+            </p>
+          </section>
+
+          <section>
+            <h2>7. Sécurité</h2>
+            <p>
+              Les mesures appropriées sont prises pour protéger vos données contre tout accès non autorisé, modification, divulgation ou destruction.
+            </p>
+          </section>
+
+          <section>
+            <h2>8. Modifications</h2>
+            <p>
+              Cette politique peut être mise à jour. La date de dernière mise à jour sera indiquée en bas de page. Nous vous invitons à la consulter régulièrement.
+            </p>
+            <p class="legal-content__updated">
+              Dernière mise à jour : mars 2026
+            </p>
+          </section>
+        </div>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</ArticleLayout>

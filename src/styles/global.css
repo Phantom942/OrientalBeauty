@@ -807,6 +807,16 @@ h3 {
   text-decoration: underline;
 }
 
+.legal-content section {
+  margin-bottom: var(--space-xl);
+}
+
+.legal-content__updated {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-lg) !important;
+}
+
 @media (max-width: 640px) {
   .article {
     padding: calc(60px + var(--space-xl)) var(--space-md) var(--space-xl);
