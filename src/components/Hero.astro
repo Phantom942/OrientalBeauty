@@ -1,11 +1,10 @@
 ---
-import { site, location } from '../config';
+import { site } from '../config';
 import Button from './Button.astro';
 ---
 
 <section class="hero" aria-labelledby="hero-title">
   <div class="hero__content">
-    <p class="hero__location reveal" style="animation-delay: 0.1s">{location.city}, {location.department}</p>
     <h1 id="hero-title" class="hero__title reveal" style="animation-delay: 0.2s">{site.name}</h1>
     <p class="hero__subtitle reveal" style="animation-delay: 0.3s">{site.tagline}</p>
     <p class="hero__desc reveal" style="animation-delay: 0.4s">{site.description}</p>
