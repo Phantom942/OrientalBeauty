@@ -6,7 +6,7 @@
 
 ## Modifications à faire chez ton hébergeur DNS
 
-Utilise le fichier **`DNS-GITHUB-PAGES.csv`** comme référence. Voici les changements :
+Utilise le fichier **`DNS-GITHUB-PAGES.csv`** (dans ce dossier) comme référence. Voici les changements :
 
 ### 1. `www.orientalbeauty.fr` — CNAME
 
@@ -18,7 +18,7 @@ Remplace **TON_USERNAME** par ton pseudo GitHub (ex. si ton repo est `github.com
 
 ### 2. `orientalbeauty.fr` (domaine racine) — enregistrements A
 
-Remplace l’A unique `81.88.57.68` par ces 4 adresses :
+Remplace l'A unique `81.88.57.68` par ces 4 adresses :
 
 | Type | Valeur |
 |------|--------|
@@ -40,21 +40,6 @@ Les autres enregistrements (MX, mail, webmail, smtp, etc.) restent inchangés.
 
 - Dépôt GitHub avec le projet poussé
 - GitHub Pages activé (Settings → Pages → Source : **GitHub Actions**)
-
----
-
-## 1. Domaine utilisé
-
-Quel domaine veux-tu ? (ex. `www.orientalbeauty.fr` ou `orientalbeauty.fr`)
-
----
-
-## 2. Sur GitHub
-
-1. Va dans **Settings** du dépôt → **Pages**
-2. Dans **Custom domain**, entre ton domaine (ex. `www.orientalbeauty.fr`)
-3. Clique **Save**
-4. GitHub affichera les enregistrements DNS à configurer
 
 ---
 
@@ -84,28 +69,6 @@ Configure les deux (A + CNAME) comme ci-dessus.
 
 ---
 
-## 4. Fichier CNAME
-
-Crée le fichier `public/CNAME` contenant uniquement ton domaine :
-
-- Avec www : `www.orientalbeauty.fr`
-- Sans www : `orientalbeauty.fr`
-
-Le contenu exact du fichier doit être **une seule ligne** avec le domaine.
-
----
-
-## 5. Astro config
-
-Dans `astro.config.mjs`, mets à jour :
-
-```js
-site: 'https://www.orientalbeauty.fr',  // ou https://orientalbeauty.fr
-base: '/',
-```
-
----
-
 ## 6. Vérification
 
 - Propagation DNS : 5 minutes à 48 h
@@ -117,7 +80,7 @@ base: '/',
 ## Résumé par registrar
 
 ### OVH / OVHcloud
-Zone DNS → Ajouter une entrée → Choisir CNAME ou A selon l’option
+Zone DNS → Ajouter une entrée → Choisir CNAME ou A selon l'option
 
 ### Gandi
 Zone DNS → Ajouter un enregistrement

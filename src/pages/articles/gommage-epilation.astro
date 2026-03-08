@@ -2,11 +2,30 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+
+const faqItems = [
+  { q: "Pourquoi faire un gommage avant l'épilation ?", a: "Le gommage élimine les cellules mortes et désobstrue les follicules pileux, ce qui permet à la cire (orientale ou classique) d'adhérer correctement au poil et de l'arracher à la racine. Sans gommage, certains poils restent inaccessibles et le résultat est moins net. Le gommage limite aussi les poils incarnés." },
+  { q: "Quand faire un gommage avant l'épilation ?", a: "Un gommage une fois par semaine est recommandé entre deux épilations. Et surtout : le gommage doit être effectué 24 à 48 heures avant l'épilation, pas le jour même. Ce délai permet à la peau de se rééquilibrer et évite des rougeurs ou irritations lors de l'épilation." },
+  { q: "Peut-on se gommer le jour de l'épilation ?", a: "Non. Le gommage doit être fait 24 à 48 heures avant l'épilation, pas le jour même. Un gommage le jour J peut sensibiliser la peau et augmenter le risque d'irritation." },
+  { q: "Comment bien gommer avant une épilation ?", a: "Appliquez le gommage sur une peau humidifiée, massez par mouvements circulaires sans appuyer trop fort, puis rincez. Deux types existent : mécanique (grains de sucre, sel) et enzymatique (pour les peaux sensibles). Pour le visage et les zones sensibles, privilégiez des grains fins ou un gommage enzymatique." },
+  { q: "Gommage et cire orientale : sont-ils compatibles ?", a: "Oui. Le gommage est recommandé avant toute épilation à la cire, y compris la cire orientale. Il favorise l'adhérence de la pâte au poil, facilite l'arrachage à la racine et limite les poils incarnés. Gommage hebdomadaire et 24 à 48 h avant le rendez-vous optimisent les résultats." },
+  { q: "Que faire en cas de poils incarnés ?", a: "En prévention : gommage hebdomadaire et 24 à 48 h avant chaque épilation. Si des poils incarnés apparaissent : éviter de les percer ou manipuler, poursuivre une exfoliation douce, appliquer un soin apaisant. En cas de persistance ou d'aggravation, consulter un dermatologue." },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": a },
+  })),
+};
 ---
 
 <ArticleLayout
-  title="Gommage et épilation : pourquoi c'est essentiel"
-  description="L'exfoliation avant l'épilation est indispensable pour une peau lisse et des résultats impeccables. Conseils et fréquence recommandée à Créteil."
+  title="Gommage avant épilation : pourquoi et quand l'utiliser ?"
+  description="Pourquoi et comment gommer avant l'épilation : préparation de la peau, réduction des poils incarnés, fréquence recommandée. Conseils d'esthétique à Créteil."
 >
   <Header />
   <main id="main">
@@ -14,17 +33,24 @@ import Footer from '../../components/Footer.astro';
       <div class="article__container">
         <a href="/articles/" class="article__back">← Tous les articles</a>
         <header class="article__header">
-          <h1 class="article__title">Gommage et épilation : pourquoi c'est essentiel</h1>
-          <p class="article__lead">Un conseil précieux pour des résultats impeccables.</p>
+          <h1 class="article__title">Gommage avant épilation : pourquoi et quand l'utiliser ?</h1>
+          <p class="article__lead">Un geste essentiel pour une épilation efficace, une peau lisse et moins de poils incarnés.</p>
         </header>
         <div class="article__content">
-          <p>L'exfoliation quotidienne et surtout avant chaque épilation est un geste indispensable. Sans gommage, impossible d'obtenir un résultat propre et une peau parfaitement lisse après l'épilation.</p>
+          <section class="qa-list" aria-label="Questions et réponses sur le gommage avant épilation">
+            {faqItems.map(({ q, a }) => (
+              <article class="qa-block">
+                <h2 class="qa-block__question">{q}</h2>
+                <div class="qa-block__answer">
+                  <p>{a}</p>
+                </div>
+              </article>
+            ))}
+          </section>
 
-          <h2>Pourquoi le gommage est indispensable</h2>
-          <p>Si les poils ne coopèrent pas — par exemple en cas de peaux mortes qui obstruent les follicules — la cire ne pourra pas faire de miracles. Elle ne pourra pas retirer les poils incarnés ni les poils courts et cassés. Il est essentiel de bien comprendre l'importance du gommage.</p>
-
-          <h2>Quand faire un gommage ?</h2>
-          <p>Pour de beaux résultats, exfoliez régulièrement : une fois par semaine, et surtout 24 à 48 heures avant chaque épilation. Ce simple geste prépare la peau, facilite l'arrachage du poil et limite les poils incarnés.</p>
+          <p class="article__related">
+            Le gommage optimise les résultats de l'épilation à la <a href="/articles/cire-orientale/">cire orientale</a>. Consultez notre article dédié pour plus de détails sur la composition et le déroulé.
+          </p>
 
           <p class="article__cta">
             <a href="/#contact">Réserver une épilation à Créteil</a>
@@ -34,4 +60,5 @@ import Footer from '../../components/Footer.astro';
     </article>
   </main>
   <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
 </ArticleLayout>

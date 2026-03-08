@@ -1,17 +1,22 @@
 ---
 import { site, links } from '../config';
+import IconInstagram from './IconInstagram.astro';
 
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer">
-  <p class="footer__text">
-    <a href={links.instagram} target="_blank" rel="noopener noreferrer">Instagram</a>
-    <span class="footer__separator">·</span>
-    <a href="/mentions-legales/">Mentions légales</a>
-    <span class="footer__separator">·</span>
-    <a href="/politique-confidentialite/">Confidentialité</a>
-    <span class="footer__separator">·</span>
+  <nav class="footer__nav" aria-label="Liens du pied de page">
+    <a href={links.instagram} target="_blank" rel="noopener noreferrer" class="footer__link" aria-label="Instagram Oriental Beauty">
+      <IconInstagram />
+      <span>Instagram</span>
+    </a>
+    <span class="footer__separator" aria-hidden="true">·</span>
+    <a href="/mentions-legales/" class="footer__link">Mentions légales</a>
+    <span class="footer__separator" aria-hidden="true">·</span>
+    <a href="/politique-confidentialite/" class="footer__link">Confidentialité</a>
+  </nav>
+  <p class="footer__copy">
     © {currentYear} {site.name} — {site.tagline}
   </p>
   <a

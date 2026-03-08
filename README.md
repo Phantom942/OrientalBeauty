@@ -57,6 +57,7 @@ base: '/',
 
 1. Ajoute un fichier `public/CNAME` contenant ton domaine : `www.toncabinet.fr`
 2. Configure le DNS chez ton registrar avec les enregistrements GitHub Pages
+3. Voir `docs/CONFIG-DNS.md` pour la configuration détaillée (Oriental Beauty)
 
 ## Personnalisation
 
@@ -71,7 +72,7 @@ Complétez `contact.address` avec l'adresse exacte du cabinet pour le SEO local.
 
 **Avant / Après** : Les images sont dans `public/images/avant-apres/` (format WEBP). Pour reconvertir : place tes PNG dans `public/images/`, puis `npm run images:webp`.
 
-### Avant mise en ligne — voir `AVANT-MISE-EN-LIGNE.md`
+### Avant mise en ligne
 
 - **Calendly** : Remplacer `links.calendly` par l’URL réelle dans `src/config.ts`
 - **Contact** : Compléter adresse, téléphone, email dans `src/config.ts`

@@ -2,11 +2,31 @@
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+
+const faqItems = [
+  { q: "C'est quoi la cire orientale ?", a: "La cire orientale (sugaring, épilation au sucre) est une méthode d'épilation à base de pâte composée uniquement de sucre, citron et eau, sans résine ni additif chimique. Son origine est attribuée au Moyen-Orient et à l'Égypte ancienne. Cette composition réduit les risques d'allergie et d'irritation par rapport aux cires à résine ou paraffine." },
+  { q: "Quelle est la composition de la cire orientale ?", a: "La cire orientale se compose de trois ingrédients uniquement : sucre (ou cassonade), jus de citron et eau. Aucun additif, conservateur ni parfum artificiel. C'est une épilation 100 % naturelle et hypoallergénique." },
+  { q: "Cire orientale ou cire classique : quelle différence ?", a: "La cire orientale s'applique tiède et adhère principalement au poil, pas à l'épiderme, contrairement à la cire chaude (résine ou paraffine) qui adhère fortement à la peau. Le retrait exerce moins de traction sur la surface cutanée. La cire orientale est souvent mieux tolérée par les peaux sensibles." },
+  { q: "La cire orientale fait mal ?", a: "La cire orientale est généralement moins douloureuse que les cires classiques car elle s'applique tiède et adhère principalement au poil. La technique de retrait limite l'inconfort. La sensation varie selon les zones et la sensibilité." },
+  { q: "Sur quelles zones peut-on utiliser la cire orientale ?", a: "La cire orientale convient à la plupart des zones : visage (sourcils, lèvre supérieure, menton), aisselles, jambes, maillot, bras. Elle est particulièrement adaptée aux zones sensibles grâce à sa composition naturelle." },
+  { q: "Combien de temps dure l'effet de la cire orientale ?", a: "La peau reste lisse environ 3 à 4 semaines après épilation à la cire orientale. Une épilation à la racine retarde la repousse par rapport au rasage. La repousse peut être plus fine et plus espacée qu'avec une cire classique." },
+  { q: "Pourquoi la cire orientale est-elle bonne pour la peau ?", a: "La cire orientale exerce moins de traction sur l'épiderme que les cires classiques, ce qui limite les rougeurs et micro-lésions. Le sucre exerce aussi une action exfoliante légère qui favorise la desquamation des cellules mortes." },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": a },
+  })),
+};
 ---
 
 <ArticleLayout
-  title="La cire orientale : qu'est-ce que c'est ?"
-  description="Méthode naturelle d'épilation venue du Moyen-Orient. Trois ingrédients uniquement : sucre, citron et eau. 100 % naturel, efficace et doux pour la peau à Créteil (94)."
+  title="La cire orientale : définition, composition et bienfaits"
+  description="La cire orientale : épilation naturelle (sucre, citron, eau), composition et bienfaits. Méthode traditionnelle, 3 à 4 semaines de peau lisse. Oriental Beauty à Créteil (94)."
 >
   <Header />
   <main id="main">
@@ -14,18 +34,24 @@ import Footer from '../../components/Footer.astro';
       <div class="article__container">
         <a href="/articles/" class="article__back">← Tous les articles</a>
         <header class="article__header">
-          <h1 class="article__title">Qu'est-ce que la cire orientale ?</h1>
-          <p class="article__lead">Une méthode d'épilation naturelle et traditionnelle, 100 % efficace et respectueuse de la peau.</p>
+          <h1 class="article__title">La cire orientale : définition, composition et bienfaits</h1>
+          <p class="article__lead">Épilation traditionnelle à base de sucre, citron et eau. Composition, principes et différences avec les cires à la résine ou à la paraffine.</p>
         </header>
         <div class="article__content">
-          <p>La cire orientale est une méthode naturelle et traditionnelle d'épilation venue du Moyen-Orient. Utilisée depuis des siècles, elle offre une alternative douce et efficace aux cires classiques.</p>
+          <section class="qa-list" aria-label="Questions et réponses sur la cire orientale">
+            {faqItems.map(({ q, a }) => (
+              <article class="qa-block">
+                <h2 class="qa-block__question">{q}</h2>
+                <div class="qa-block__answer">
+                  <p>{a}</p>
+                </div>
+              </article>
+            ))}
+          </section>
 
-          <h2>Une composition 100 % naturelle</h2>
-          <p>La cire orientale est composée de trois ingrédients uniquement : du sucre, du citron et de l'eau chaude. Aucun additif, aucun conservateur, aucun risque d'allergie. C'est une épilation 100 % naturelle.</p>
-
-          <h2>Les bienfaits de la cire orientale</h2>
-          <p>Ce mélange à la simplicité impressionnante permet d'épiler la peau à la perfection tout en laissant une sensation de douceur. La cire orientale est notamment très efficace pour lutter contre les poils : le jus de citron agit sur le bulbe du poil, ce qui ralentit la repousse par rapport à une cire classique. Vous profitez ainsi d'environ 4 semaines de tranquillité.</p>
-          <p>En plus de son action épilante, la cire orientale exfolie la peau en douceur grâce au sucre qu'elle contient. De quoi sublimer instantanément la peau tout en garantissant une meilleure repousse.</p>
+          <p class="article__related">
+            Le gommage avant l'épilation améliore l'efficacité de la cire orientale. Consultez notre article sur le <a href="/articles/gommage-epilation/">gommage avant épilation</a>.
+          </p>
 
           <p class="article__cta">
             <a href="/#contact">Réserver une épilation à la cire orientale à Créteil</a>
@@ -35,4 +61,5 @@ import Footer from '../../components/Footer.astro';
     </article>
   </main>
   <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)}></script>
 </ArticleLayout>
