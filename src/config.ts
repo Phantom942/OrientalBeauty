@@ -46,7 +46,7 @@ export const links = {
 
 export const contact = {
   phone: "07 69 84 21 68",
-  email: "contact@exemple.fr",
+  email: "booking@orientalbeauty.fr",
   address: "Créteil, 94000", // À compléter avec l'adresse exacte
 } as const;
 
