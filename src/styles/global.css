@@ -182,22 +182,9 @@ h3 {
 
 /* === Header === */
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
   padding: var(--space-md) 0;
-  background: rgba(250, 249, 247, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-
-.header.scrolled {
-  border-color: var(--color-border-light);
-  box-shadow: var(--shadow-sm);
+  background: var(--color-bg);
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .header__inner {
@@ -379,8 +366,8 @@ h3 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: calc(60px + var(--space-xl)) var(--space-md) var(--space-xl);
-  padding-top: calc(60px + env(safe-area-inset-top, 0px) + var(--space-xl));
+  padding: var(--space-xl) var(--space-md) var(--space-xl);
+  padding-top: calc(env(safe-area-inset-top, 0px) + var(--space-xl));
   padding-bottom: calc(var(--space-xl) + env(safe-area-inset-bottom, 0px));
   position: relative;
   overflow: hidden;
@@ -388,7 +375,7 @@ h3 {
 
 @media (min-width: 640px) {
   .hero {
-    padding: calc(72px + var(--space-2xl)) var(--space-lg) var(--space-2xl);
+    padding: var(--space-2xl) var(--space-lg) var(--space-2xl);
   }
 }
 
@@ -737,7 +724,7 @@ h3 {
 
 /* === Article (single page) === */
 .article {
-  padding: calc(72px + var(--space-2xl)) var(--space-md) var(--space-2xl);
+  padding: var(--space-2xl) var(--space-md) var(--space-2xl);
 }
 
 .article__container {
@@ -871,7 +858,7 @@ h3 {
 
 @media (max-width: 640px) {
   .article {
-    padding: calc(60px + var(--space-xl)) var(--space-md) var(--space-xl);
+    padding: var(--space-xl) var(--space-md) var(--space-xl);
   }
 }
 
