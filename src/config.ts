@@ -40,7 +40,7 @@ export const seo = {
 
 export const links = {
   instagram: "https://www.instagram.com/oriental_beauty94",
-  calendly: "#", // À remplacer par le lien Calendly
+  calendly: "https://calendly.com/contact-orientalbeauty94/new-meeting",
   whatsapp: "https://wa.me/33650435966",
 } as const;
 
