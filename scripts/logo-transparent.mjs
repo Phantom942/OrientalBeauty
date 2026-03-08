@@ -5,16 +5,19 @@
 import sharp from 'sharp';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { copyFile } from 'fs/promises';
+import { copyFile, access } from 'fs/promises';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const publicDir = join(__dirname, '../public');
 const logoPath = join(publicDir, 'logo.png');
 const faviconPath = join(publicDir, 'favicon.png');
+const origPath = join(publicDir, 'logo-original.png');
+const inputPath = await access(origPath).then(() => origPath).catch(() => logoPath);
 
-const threshold = 245; // Pixels R,G,B >= 245 → transparent
+// Fond clair → transparent (blanc, crème, #faf9f7…)
+const LIGHT_THRESHOLD = 200; // luminance moyenne au-dessus → transparent
 
-const { data, info } = await sharp(logoPath)
+const { data, info } = await sharp(inputPath)
   .ensureAlpha()
   .raw()
   .toBuffer({ resolveWithObject: true });
@@ -24,7 +27,8 @@ for (let i = 0; i < data.length; i += channels) {
   const r = data[i];
   const g = data[i + 1];
   const b = data[i + 2];
-  if (r >= threshold && g >= threshold && b >= threshold) {
+  const luminance = (r + g + b) / 3;
+  if (luminance >= LIGHT_THRESHOLD) {
     data[i + 3] = 0;
   }
 }
