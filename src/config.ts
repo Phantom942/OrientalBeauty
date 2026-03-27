@@ -45,7 +45,7 @@ export const links = {
 } as const;
 
 export const contact = {
-  phone: "07 69 84 21 68",
+  phone: "06 50 43 59 66",
   email: "booking@orientalbeauty.fr",
   address: "Créteil, 94000", // À compléter avec l'adresse exacte
 } as const;
